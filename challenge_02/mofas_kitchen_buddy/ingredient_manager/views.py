@@ -5,6 +5,10 @@ from rest_framework.views import APIView, Response
 
 # Crud Operation for Managing Ingredients
 class IngredientView(APIView):
+    """
+    API endpoint that allows ingredients to be viewed, added, updated and deleted.
+    """
+
     def get(self, request):
         if "id" in request.query_params:
             ingredient = Ingredient.objects.filter(id=request.query_params["id"])

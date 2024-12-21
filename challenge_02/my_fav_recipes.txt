@@ -177,3 +177,10 @@ Taste: 4.7/5
 Cuisine Type: British
 Preparation Time: 60 minutes
 Reviews: 750
+
+Recipe: Spaghetti Carbonara
+Taste: 5/5
+Cuisine Type: Italian
+Preparation Time: 25 minutes
+Reviews: 500
+
