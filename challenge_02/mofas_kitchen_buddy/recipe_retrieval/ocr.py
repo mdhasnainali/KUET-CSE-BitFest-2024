@@ -1,6 +1,9 @@
 import requests
 import base64
 import json
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+
 
 def extract_text_from_image(image_url, api_key):
     """
@@ -14,9 +17,13 @@ def extract_text_from_image(image_url, api_key):
     Returns:
         str: Extracted text from the image.
     """
-    # Download the image from the URL
     try:
-        image_response = requests.get(image_url)
+        # Fetch the image
+        session = requests.Session()
+        retries = Retry(total=3, backoff_factor=1, status_forcelist=[500, 502, 503, 504])
+        session.mount("https://", HTTPAdapter(max_retries=retries))
+        
+        image_response = session.get(image_url, timeout=10)
         image_response.raise_for_status()
         image_data = image_response.content
     except requests.RequestException as e:
@@ -24,6 +31,7 @@ def extract_text_from_image(image_url, api_key):
 
     # Convert image to Base64
     base64_image = base64.b64encode(image_data).decode("utf-8")
+
 
     # Define the payload
     payload = {
@@ -50,7 +58,10 @@ Cuisine Type: Mexican
 Preparation Time: 25 minutes
 Reviews: 1200
 ```
-If theres not enough information to provide a recipe like this, repond with 'ERROR'"""
+If theres not enough information to provide a recipe like this, repond with 'ERROR'
+The response should be in plain text format, no additional formatting is required.
+
+"""
 
                     },
                     {

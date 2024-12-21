@@ -66,7 +66,7 @@ class RecipeListView(APIView):
             serializer = ImageSerializer(data=request.data)
             if serializer.is_valid():
                 image = serializer.validated_data["image_url"]
-                api_key = "sk-proj-UDRdgrqpSEQH8EYltcl6T3BlbkFJEeSxV8k0OR9iU6C9e2Zg"
+                api_key = "..."
                 response = extract_text_from_image(image, api_key)
                 print(response)
                 if response == "ERROR":
@@ -79,14 +79,23 @@ class RecipeListView(APIView):
                 try:
                     file_path = BASE_DIR.parent / "my_fav_recipes.txt"
                     with open(file_path, "a") as file:
-                        file.write(f"{response}\n")
+                        recipe_content = response["choices"][0]["message"]["content"]
+                        file.write(f"{recipe_content}\n")
+
+                    return Response(
+                        {
+                            "message": "Recipe added successfully",
+                            "extracted_text": recipe_content,
+                        },
+                        status=status.HTTP_201_CREATED,
+                    )
+
                 except Exception as e:
                     return Response(
                         {"message": f"Error writing to file: {str(e)}"},
                         status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                     )
 
-        
         serializer = RecipeSerializer(data=request.data)
         if serializer.is_valid():
             recipe = serializer.validated_data
@@ -128,11 +137,13 @@ class ChatBotView(APIView):
             )
 
         # Prompt for the Gemini API
-        prompt = "Suppose you are a chef, and you have the following ingredients: \n```\n"        
+        prompt = (
+            "Suppose you are a chef, and you have the following ingredients: \n```\n"
+        )
         for ingredient in ingredients:
             prompt += f"ingredient name: {ingredient.ingredient_name} - quantity: {ingredient.quantity} {ingredient.unit}, price: {ingredient.price}\n"
-        
-        prompt += "```\n"        
+
+        prompt += "```\n"
         prompt += f"and you want to make a recipe based on the following message: ```{message}``` \n"
         prompt += "and you know these recipes: ```\n"
         file_path = BASE_DIR.parent / "my_fav_recipes.txt"
@@ -140,11 +151,10 @@ class ChatBotView(APIView):
             lines = file.readlines()
             for line in lines:
                 prompt += f"{line}"
-        
+
         prompt += "```\n"
         prompt += "Please generate a recipe based on the above information. The response will be in plain text format, simple and easy to understand. Dont use markdown, try to use line breaks for better readability."
         return prompt
-
 
     def post(self, request):
         data = request.data
@@ -158,13 +168,12 @@ class ChatBotView(APIView):
 
         # Gemini API endpoint
         gemini_api_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
-        api_key = "AIzaSyDIIUZ7IImpEigbHyqDa-qgXaEyLYHfzZs" 
+        api_key = "..."
         headers = {"Content-Type": "application/json"}
 
         message = self.get_prompt(message)
         print(message)
         payload = {"contents": [{"parts": [{"text": message}]}]}
-        
 
         try:
             # Send request to Gemini API
@@ -173,7 +182,7 @@ class ChatBotView(APIView):
             )
             response_data = response.json()
 
-            if response.status_code == 200:                
+            if response.status_code == 200:
                 reply = (
                     response_data.get("candidates", [{}])[0]
                     .get("content", {})

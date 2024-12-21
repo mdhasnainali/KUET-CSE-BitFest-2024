@@ -184,3 +184,8 @@ Cuisine Type: Italian
 Preparation Time: 25 minutes
 Reviews: 500
 
+Recipe: Spaghetti Carbonara
+Taste: 5/5
+Cuisine Type: Italian
+Preparation Time: 25 minutes
+Reviews: 500
