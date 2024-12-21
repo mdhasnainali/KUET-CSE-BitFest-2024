@@ -1,0 +1,179 @@
+Recipe: Pizza
+Taste: 4.8/5
+Cuisine Type: Italian
+Preparation Time: 30 minutes
+Reviews: 1000
+
+Recipe: Sushi
+Taste: 4.7/5
+Cuisine Type: Japanese
+Preparation Time: 45 minutes
+Reviews: 850
+
+Recipe: Tacos
+Taste: 4.6/5
+Cuisine Type: Mexican
+Preparation Time: 25 minutes
+Reviews: 1200
+
+Recipe: Butter Chicken
+Taste: 4.9/5
+Cuisine Type: Indian
+Preparation Time: 60 minutes
+Reviews: 900
+
+Recipe: Chocolate Cake
+Taste: 4.5/5
+Cuisine Type: Dessert
+Preparation Time: 70 minutes
+Reviews: 1100
+
+Recipe: Pad Thai
+Taste: 4.7/5
+Cuisine Type: Thai
+Preparation Time: 35 minutes
+Reviews: 1000
+
+Recipe: Falafel
+Taste: 4.4/5
+Cuisine Type: Middle Eastern
+Preparation Time: 40 minutes
+Reviews: 600
+
+Recipe: Chow Mein
+Taste: 4.6/5
+Cuisine Type: Chinese
+Preparation Time: 30 minutes
+Reviews: 800
+
+Recipe: Burger
+Taste: 4.3/5
+Cuisine Type: American
+Preparation Time: 20 minutes
+Reviews: 1500
+
+Recipe: Paella
+Taste: 4.8/5
+Cuisine Type: Spanish
+Preparation Time: 50 minutes
+Reviews: 700
+
+Recipe: Ratatouille
+Taste: 4.5/5
+Cuisine Type: French
+Preparation Time: 55 minutes
+Reviews: 650
+
+Recipe: Kimchi Stew
+Taste: 4.6/5
+Cuisine Type: Korean
+Preparation Time: 40 minutes
+Reviews: 500
+
+Recipe: Fish and Chips
+Taste: 4.7/5
+Cuisine Type: British
+Preparation Time: 35 minutes
+Reviews: 750
+
+Recipe: Greek Salad
+Taste: 4.4/5
+Cuisine Type: Mediterranean
+Preparation Time: 15 minutes
+Reviews: 1100
+
+Recipe: Pavlova
+Taste: 4.8/5
+Cuisine Type: Australian
+Preparation Time: 80 minutes
+Reviews: 600
+
+Recipe: Biryani
+Taste: 4.9/5
+Cuisine Type: Indian
+Preparation Time: 90 minutes
+Reviews: 850
+
+Recipe: Pho
+Taste: 4.6/5
+Cuisine Type: Vietnamese
+Preparation Time: 45 minutes
+Reviews: 650
+
+Recipe: Empanadas
+Taste: 4.7/5
+Cuisine Type: Latin American
+Preparation Time: 50 minutes
+Reviews: 550
+
+Recipe: Clam Chowder
+Taste: 4.5/5
+Cuisine Type: American
+Preparation Time: 35 minutes
+Reviews: 750
+
+Recipe: Pasta Carbonara
+Taste: 4.8/5
+Cuisine Type: Italian
+Preparation Time: 25 minutes
+Reviews: 1300
+
+Recipe: Goulash
+Taste: 4.7/5
+Cuisine Type: Hungarian
+Preparation Time: 60 minutes
+Reviews: 400
+
+Recipe: Crepes
+Taste: 4.6/5
+Cuisine Type: French
+Preparation Time: 20 minutes
+Reviews: 1100
+
+Recipe: Shakshuka
+Taste: 4.5/5
+Cuisine Type: Middle Eastern
+Preparation Time: 30 minutes
+Reviews: 600
+
+Recipe: Beef Stroganoff
+Taste: 4.8/5
+Cuisine Type: Russian
+Preparation Time: 50 minutes
+Reviews: 700
+
+Recipe: Moussaka
+Taste: 4.6/5
+Cuisine Type: Greek
+Preparation Time: 70 minutes
+Reviews: 400
+
+Recipe: Ramen
+Taste: 4.7/5
+Cuisine Type: Japanese
+Preparation Time: 40 minutes
+Reviews: 900
+
+Recipe: Hummus
+Taste: 4.5/5
+Cuisine Type: Middle Eastern
+Preparation Time: 15 minutes
+Reviews: 1200
+
+Recipe: Fajitas
+Taste: 4.6/5
+Cuisine Type: Mexican
+Preparation Time: 30 minutes
+Reviews: 1000
+
+Recipe: Lasagna
+Taste: 4.9/5
+Cuisine Type: Italian
+Preparation Time: 90 minutes
+Reviews: 800
+
+Recipe: Shepherd’s Pie
+Taste: 4.7/5
+Cuisine Type: British
+Preparation Time: 60 minutes
+Reviews: 750

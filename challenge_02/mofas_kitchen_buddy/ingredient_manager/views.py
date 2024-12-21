@@ -1,5 +1,5 @@
-from ingredient_manager.models import Ingredient
-from ingredient_manager.serializers import IngredientSerializer
+from .models import Ingredient
+from .serializers import IngredientSerializer
 from rest_framework.views import APIView, Response
 
 
@@ -7,7 +7,11 @@ from rest_framework.views import APIView, Response
 class IngredientView(APIView):
     def get(self, request):
         if "id" in request.query_params:
-            ingredient = Ingredient.objects.get(pk=request.query_params["id"])
+            ingredient = Ingredient.objects.filter(id=request.query_params["id"])
+            if not ingredient:
+                return Response({"message": "Ingredient not found"}, status=404)
+            
+            ingredient = ingredient.first()
             serializer = IngredientSerializer(ingredient)
             return Response(serializer.data)
 
@@ -30,7 +34,10 @@ class IngredientView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=400)
 
-    def delete(self, request, pk):
-        ingredient = Ingredient.objects.get(pk=pk)
+    def delete(self, request, pk):        
+        ingredient = Ingredient.objects.filter(pk=pk)
+        if not ingredient:
+            return Response({"message": "Ingredient not found"}, status=404)
+        ingredient = ingredient.first()
         ingredient.delete()
         return Response({"message": "Ingredient deleted successfully"}, status=204)
