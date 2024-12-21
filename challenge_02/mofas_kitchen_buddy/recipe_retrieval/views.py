@@ -66,7 +66,7 @@ class RecipeListView(APIView):
             serializer = ImageSerializer(data=request.data)
             if serializer.is_valid():
                 image = serializer.validated_data["image_url"]
-                # api_key = "API_KEY"
+                api_key = "API_KEY"
                 response = extract_text_from_image(image, api_key)
                 print(response)
                 if response == "ERROR":
@@ -168,7 +168,7 @@ class ChatBotView(APIView):
 
         # Gemini API endpoint
         gemini_api_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
-        # api_key = "API_KEY"
+        api_key = "API_KEY"
         headers = {"Content-Type": "application/json"}
 
         message = self.get_prompt(message)
