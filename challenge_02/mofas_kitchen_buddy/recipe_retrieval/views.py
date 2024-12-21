@@ -2,9 +2,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from mofas_kitchen_buddy.settings import BASE_DIR
-from .serializers import RecipeSerializer  # Import the serializer
+from .serializers import RecipeSerializer, ImageSerializer
 from ingredient_manager.models import Ingredient
 import requests
+from .ocr import extract_text_from_image
 
 
 # For Reading the text file
@@ -61,6 +62,31 @@ class RecipeListView(APIView):
 
     def post(self, request):
         # Validate the data using the serializer
+        if "ocr" in request.query_params:
+            serializer = ImageSerializer(data=request.data)
+            if serializer.is_valid():
+                image = serializer.validated_data["image_url"]
+                api_key = "sk-proj-UDRdgrqpSEQH8EYltcl6T3BlbkFJEeSxV8k0OR9iU6C9e2Zg"
+                response = extract_text_from_image(image, api_key)
+                print(response)
+                if response == "ERROR":
+                    return Response(
+                        {"message": "Not enough information to provide a recipe"},
+                        status=status.HTTP_400_BAD_REQUEST,
+                    )
+
+                # Write the response to the file
+                try:
+                    file_path = BASE_DIR.parent / "my_fav_recipes.txt"
+                    with open(file_path, "a") as file:
+                        file.write(f"{response}\n")
+                except Exception as e:
+                    return Response(
+                        {"message": f"Error writing to file: {str(e)}"},
+                        status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                    )
+
+        
         serializer = RecipeSerializer(data=request.data)
         if serializer.is_valid():
             recipe = serializer.validated_data

@@ -6,3 +6,6 @@ class RecipeSerializer(serializers.Serializer):
     cuisine_type = serializers.CharField()
     preparation_time = serializers.CharField()
     reviews = serializers.IntegerField()
+
+class ImageSerializer(serializers.Serializer):
+    image_url = serializers.URLField()
